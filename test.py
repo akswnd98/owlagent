@@ -23,3 +23,7 @@ data = json.dumps({
 })
 
 print(data)
+
+data = json.dumps([1, 2, 3])
+
+print(data)

@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "thought": {
+      "type": "string",
+      "description": "The reason you called this function"
+    },
+    "function_call": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "name of function to call"
+        },
+        "arguments": {
+          "type": "object",
+          "description": "arguments for function call"
+        }
+      },
+      "required": ["name", "arguments"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["thought", "function_call"],
+  "additionalProperties": false
+}

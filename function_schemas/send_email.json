@@ -1,0 +1,42 @@
+{
+  "call_schema": {
+    "type": "object",
+    "description": "function for send email",
+    "properties": {
+      "name": {
+        "type": "string",
+        "const": "send_email"
+      },
+      "arguments": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "description": "target email address"
+          },
+          "subject": {
+            "type": "string",
+            "description": "title of this email"
+          },
+          "body": {
+            "type": "string",
+            "description": "main detail of this email"
+          }
+        },
+        "required": ["address", "subject", "body"],
+        "additionalProperties": false
+      }
+    },
+    "required": ["name", "arguments"],
+    "additionalProperties": false
+  },
+  "return_schema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string",
+        "description": "message indicating success or failure"
+      }
+    }
+  }
+}

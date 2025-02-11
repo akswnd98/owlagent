@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "properties": {
+    "chat_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "user input"
+          },
+          "assistant": {
+            "type": "string",
+            "description": "assistant answer which is return value of give_final_answer function call"
+          }
+        },
+        "required": ["user", "assistant"],
+        "additionalProperties": false
+      }
+    },
+    "function_call_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "thought": {
+            "type": "string"
+          },
+          "function_call": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "name of function to call"
+              },
+              "arguments": {
+                "type": "object",
+                "description": "arguments for function call"
+              }
+            },
+            "required": ["name", "arguments"],
+            "additionalProperties": false
+          },
+          "function_call_result": {
+            "type": "object"
+          }
+        },
+        "required": ["thought", "function_call", "function_call_result"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["chat_history", "function_call_history"],
+  "additionalProperties": false
+}
