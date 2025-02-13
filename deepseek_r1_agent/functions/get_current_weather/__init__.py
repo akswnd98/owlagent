@@ -4,7 +4,7 @@ import os
 
 class GetCurrentWeather (SimpleFunction):
   def __init__ (self):
-    super().__init__(json.dumps(open(f"{os.path.dirname(os.path.abspath(__file__))}/schema.json").read()))
+    super().__init__("get_current_weather", json.load(open(f"{os.path.dirname(os.path.abspath(__file__))}/schema.json")))
 
   def call (self, arguments):
     return "current temperature is 37 degree."

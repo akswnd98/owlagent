@@ -6,16 +6,16 @@
       "items": {
         "type": "object",
         "properties": {
-          "user": {
+          "role": {
             "type": "string",
-            "description": "user input"
+            "enum": ["user", "assistant"]
           },
-          "assistant": {
+          "content": {
             "type": "string",
-            "description": "assistant answer which is return value of give_final_answer function call"
+            "description": "main chat text"
           }
         },
-        "required": ["user", "assistant"],
+        "required": ["role", "content"],
         "additionalProperties": false
       }
     },

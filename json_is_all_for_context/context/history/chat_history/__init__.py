@@ -15,7 +15,7 @@ class UserChatStep (ChatStep):
   def __init__ (self, content: str):
     super().__init__("chat", content)
 
-class AssistantChatStep (HistoryStep):
+class AssistantChatStep (ChatStep):
   def __init__ (self, content: str):
     super().__init__("assistant", content)
 

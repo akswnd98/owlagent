@@ -8,14 +8,14 @@ class FunctionCallableHistory (History):
 
   def __init__ (self):
     self._chat_history = ChatHistory()
-    self._function_call_history = FunctionCallableHistory()
+    self._function_call_history = FunctionCallHistory()
 
   def get_json (self):
     return {"chat_history": self._chat_history.get_json(), "function_call_history": self._function_call_history.get_json()}
   
   def append_history_steps (self, steps: list[ChatStep | FunctionCallStep]):
     for step in steps:
-      self._append_history_step([step])
+      self._append_history_step(step)
 
   def _append_history_step (self, step: ChatStep | FunctionCallStep):
     if isinstance(step, ChatStep):

@@ -5,8 +5,9 @@ from langchain_core.tools import tool
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, AIMessagePromptTemplate
 
 llm = ChatLlamaCpp(
-  model_path="../DeepSeek-R1-Distill-Qwen-14B-Q4_0.gguf",
-  n_ctx=65536
+  model_path="../DeepSeek-R1-Distill-Qwen-32B-Q4_0.gguf",
+  n_ctx=65536,
+  n_gpu_layers=-1
 )
 
 messages = [

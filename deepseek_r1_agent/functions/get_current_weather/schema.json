@@ -4,16 +4,21 @@
     "properties": {
       "name": {
         "type": "string",
-        "const": "give_final_answer"
+        "const": "get_current_weather"
       },
       "arguments": {
         "type": "object",
         "properties": {
-          "final_answer": {
+          "location": {
             "type": "string",
-            "description": "final answer. report for user input"
+            "description": "The city and state, e.g. San Francisco, CA"
+          },
+          "format": {
+            "type": "string",
+            "description": "The temperature unit to use. Infer this from the users location. (choices: [\"celsius\", \"fahrenheit\"])"
           }
         },
+        "required": ["location", "format"],
         "additionalProperties": false
       }
     },
@@ -22,7 +27,12 @@
   },
   "return_schema": {
     "type": "object",
-    "properties": {},
+    "properties": {
+      "temperature": {
+        "type": "string"
+      }
+    },
+    "required": ["temperature"],
     "additionalProperties": false
   }
 }

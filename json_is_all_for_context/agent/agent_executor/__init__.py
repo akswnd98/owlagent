@@ -19,13 +19,13 @@ class AgentExecutor:
 class SimpleAgentExecutor:
   _history: History
   _agent: Agent
-  _function_key_lambda_map: dict[str, Callable]
+  _function_key_lambda_map: dict[str, Callable] = {}
 
   def __init__ (self, agent: Agent, history_generator: HistoryGenerator):
     self._agent = agent
     self._history = history_generator.generate()
 
-  def invoke (self, input: str):
+  def invoke (self, input: str) -> str:
     self._history.append_history_steps([UserChatStep(input)])
     agent_action: AnswerAction | FunctionCallAction | None = None
     while True:
@@ -40,12 +40,13 @@ class SimpleAgentExecutor:
         FunctionCallStep(
           agent_action_json["thought"],
           agent_action_json["function_call"]["name"],
-          agent_action_json["function_name"]["arguments"],
+          agent_action_json["function_call"]["arguments"],
           function_return
         )
       ])
     
     self._history.append_history_steps([AssistantChatStep(agent_action.get_json())])
+    return agent_action.get_json()
   
   def bind_functions (self, functions: list[Function]):
     for function in functions:
