@@ -1,0 +1,28 @@
+{
+  "call_schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "const": "give_final_answer"
+      },
+      "arguments": {
+        "type": "object",
+        "properties": {
+          "final_answer": {
+            "type": "string",
+            "description": "final answer. report for user input"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "required": ["name", "arguments"],
+    "additionalProperties": false
+  },
+  "return_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  }
+}

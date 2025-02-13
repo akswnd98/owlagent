@@ -1,12 +1,6 @@
-class FunctionCallStep:
-  def get_json (self):
-    pass
+from .. import History, HistoryStep
 
-class FunctionCallHistory:
-  def get_json (self):
-    pass
-
-class ConcreteFunctionCallStep (FunctionCallStep):
+class FunctionCallStep (HistoryStep):
   _thought: str
   _function_name: str
   _arguments: any
@@ -28,14 +22,14 @@ class ConcreteFunctionCallStep (FunctionCallStep):
       "function_call_result": self._function_call_result
     }
 
-class ConcreteFunctionCallHistory (FunctionCallHistory):
-  _function_call_list: list[FunctionCallStep]
+class FunctionCallHistory (History):
+  _function_call_steps: list[FunctionCallStep]
 
   def __init__ (self):
-    self._function_call_list = []
+    self._function_call_steps = []
 
   def get_json (self):
-    return list(map(lambda function_call_step: function_call_step.get_json(), self._function_call_list))
+    return list(map(lambda function_call_step: function_call_step.get_json(), self._function_call_steps))
   
-  def append_history (self, function_call_step: FunctionCallStep):
-    self._chat_list.append(function_call_step)
+  def append_history_steps (self, function_call_steps: list[FunctionCallStep]):
+    self._function_call_steps += function_call_steps

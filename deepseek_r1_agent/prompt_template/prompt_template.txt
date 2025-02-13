@@ -24,4 +24,4 @@ Each function consists of call_schema and return_schema.
 {{functions}}
 
 [start]
-{"chat_history": {{chat_history}}, "function_call_history": {{function_call_history}}}
+{{input}}
