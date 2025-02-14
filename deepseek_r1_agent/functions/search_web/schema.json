@@ -3,14 +3,14 @@
   "properties": {
     "name": {
       "type": "string",
-      "const": "give_final_answer"
+      "const": "search_web"
     },
     "arguments": {
       "type": "object",
       "properties": {
-        "final_answer": {
+        "search_query": {
           "type": "string",
-          "description": "final answer. report for user input"
+          "description": "query for this search"
         }
       },
       "additionalProperties": false

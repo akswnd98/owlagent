@@ -1,39 +1,27 @@
 {
-  "call_schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "type": "string",
-        "const": "get_current_weather"
-      },
-      "arguments": {
-        "type": "object",
-        "properties": {
-          "location": {
-            "type": "string",
-            "description": "The city and state, e.g. San Francisco, CA"
-          },
-          "format": {
-            "type": "string",
-            "enum": ["celsius", "fahrenheit"],
-            "description": "The temperature unit to use. Infer this from the users location."
-          }
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "get_current_weather"
+    },
+    "arguments": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "The city and state, e.g. San Francisco, CA"
         },
-        "required": ["location", "format"],
-        "additionalProperties": false
-      }
-    },
-    "required": ["name", "arguments"],
-    "additionalProperties": false
+        "format": {
+          "type": "string",
+          "enum": ["celsius", "fahrenheit"],
+          "description": "The temperature unit to use. Infer this from the users location."
+        }
+      },
+      "required": ["location", "format"],
+      "additionalProperties": false
+    }
   },
-  "return_schema": {
-    "type": "object",
-    "properties": {
-      "temperature": {
-        "type": "string"
-      }
-    },
-    "required": ["temperature"],
-    "additionalProperties": false
-  }
+  "required": ["name", "arguments"],
+  "additionalProperties": false
 }

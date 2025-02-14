@@ -60,10 +60,10 @@ class DeepseekR1Agent (Agent):
   def invoke (self, history: FunctionCallableHistory) -> AgentAction:
     input = json.dumps(history.get_json())
     message = f"{self._prompt_template.format_prompt(input=input).text}<think>\n"
-    # print(f"input: {message}")
+    print(f"input: {message}")
     output = self._llm(message, temperature=0.6, max_tokens=4096)
     output = output["choices"][0]["text"]
-    # print(f"output: {output}")
+    print(f"output: {output}")
     output_json = self._additional_parser.invoke(output)
     if output_json["function_call"]["name"] == "give_final_answer":
       return AnswerAction(output_json["function_call"]["arguments"]["final_answer"])

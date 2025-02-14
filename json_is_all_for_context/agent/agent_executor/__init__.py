@@ -49,7 +49,6 @@ class SimpleAgentExecutor:
     return agent_action.get_json()
   
   def bind_functions (self, functions: list[Function]):
-    for function in functions:
-      self._function_key_lambda_map[function.get_function_name()] = lambda arguments: function.call(arguments)
-
+    self._function_key_lambda_map = {
+      function.get_function_name(): (lambda function: lambda arguments: function.call(arguments))(function) for function in functions} # 개같노 진짜
     self._agent.bind_functions(functions)
