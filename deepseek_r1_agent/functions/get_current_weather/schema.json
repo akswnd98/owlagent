@@ -15,7 +15,8 @@
           },
           "format": {
             "type": "string",
-            "description": "The temperature unit to use. Infer this from the users location. (choices: [\"celsius\", \"fahrenheit\"])"
+            "enum": ["celsius", "fahrenheit"],
+            "description": "The temperature unit to use. Infer this from the users location."
           }
         },
         "required": ["location", "format"],

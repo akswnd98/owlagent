@@ -25,7 +25,8 @@
         "type": "object",
         "properties": {
           "thought": {
-            "type": "string"
+            "type": "string",
+            "description": "reason you call this function"
           },
           "function_call": {
             "type": "object",
@@ -43,7 +44,7 @@
             "additionalProperties": false
           },
           "function_call_result": {
-            "type": "object"
+            "type": "string"
           }
         },
         "required": ["thought", "function_call", "function_call_result"],
